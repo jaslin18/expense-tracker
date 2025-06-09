@@ -1,10 +1,10 @@
 def log_expenses(func):
   def wrapper(*args,**kwargs):
      print("Entering the expenses data...")
-     result = func(*args, **kwargs)
+     result = func(*args, **kwargs) #will call the add_expenses function
      return result
   return wrapper
-
+#list to store all the expenses in dictionary
 expenses = [] 
 
 @log_expenses
@@ -18,7 +18,7 @@ def add_expenses():
               "note": notes,
               "date": date
             }
-  expenses.append(expense)
+  expenses.append(expense) #append is used to new item
   print("Expense added successfully")
 
   more = input("Do you want to add more expenses? (yes/no):").lower()
@@ -28,6 +28,7 @@ def add_expenses():
     print("Thank you")
 
 def view_expenses():
+  #checks if there is no data in the dictionary
   if not expenses:
     print("No expenses found")
   else:
@@ -37,7 +38,7 @@ def view_expenses():
 
 def total_expenses():
   total = sum(expense["amount"] for expense in expenses)
-  print(f"Total Expenses: ₹{total}")
+  print(f"Total Expenses: ₹{total}")  #to get the total expenses
 
 def main_menu():
   while True:
